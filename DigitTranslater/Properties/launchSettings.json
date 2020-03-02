@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DigitTranslater": {
+      "commandName": "Project",
+      "commandLineArgs": "ua 99999"
+    }
+  }
+}
