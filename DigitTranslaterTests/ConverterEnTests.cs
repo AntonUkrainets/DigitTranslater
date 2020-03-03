@@ -1,202 +1,61 @@
 ﻿using DigitTranslater;
 using DigitTranslater.Localization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Xunit;
 
 namespace DigitTranslaterTests
 {
-    [TestClass]
     public class ConverterEnTests
     {
         #region Private Members
-        private Converter _converter;
+
         private LanguageNumbersDescriptor _localization;
+
         #endregion
 
         public ConverterEnTests()
         {
-            _converter = new Converter();
             _localization = new EnLoсalizationNumbers();
         }
 
-        [TestMethod]
-        public void ConvertNumber0()
+        [Theory]
+        [InlineData(0, "zero")]
+        [InlineData(1, "one")]
+        [InlineData(11, "eleven")]
+        [InlineData(35, "thirty five")]
+        [InlineData(100, "one hundred")]
+        [InlineData(345, "three hundred forty five")]
+        [InlineData(999, "nine hundred ninety nine")]
+        [InlineData(1000, "one thousand")]
+        [InlineData(1245, "one thousand two hundred forty five")]
+        [InlineData(7777, "seven thousand seven hundred seventy seven")]
+        [InlineData(45256, "forty five thousand two hundred fifty six")]
+        [InlineData(90000, "ninety thousand")]
+        [InlineData(99999, "ninety nine thousand nine hundred ninety nine")]
+        [InlineData(100000, "one hundred thousand")]
+        [InlineData(900000, "nine hundred thousand")]
+        [InlineData(999999, "nine hundred ninety nine thousand nine hundred ninety nine")]
+        public void ConvertNumber(int number, string expectedValue)
         {
             // Arrange
-            var descriptor = new NumberDescriptor(0);
-            var expectedValue = "zero";
+            var descriptor = new NumberDescriptor(number);
 
             // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
+            var result = Converter.ConvertToString(descriptor, _localization);
 
             // Assert
-            Assert.AreEqual(expectedValue, result);
+            Assert.Equal(expectedValue, result);
         }
 
-        [TestMethod]
-        public void ConvertNumber1()
+        [Fact]
+        public void ConvertWrongNumber()
         {
             // Arrange
-            var descriptor = new NumberDescriptor(1);
-            var expectedValue = "one";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
+            var expectedMessage = "Input string was not in a correct format.";
 
             // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        [ExpectedException(
-            typeof(FormatException),
-            "Input string was not in a correct format"
-        )]
-        public void ConvertNumberMinus1()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(-1);
-        }
-
-        [TestMethod]
-        public void ConvertNumber11()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(11);
-            var expectedValue = "eleven";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber100()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(100);
-            var expectedValue = "one hundred";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber345()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(345);
-            var expectedValue = "three hundred forty five";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber999()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(999);
-            var expectedValue = "nine hundred ninety nine";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber45256()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(45256);
-            var expectedValue = "forty five thousand two hundred fifty six";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber90000()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(90000);
-            var expectedValue = "ninety thousand";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber99999()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(99999);
-            var expectedValue = "ninety nine thousand nine hundred ninety nine";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber100000()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(100000);
-            var expectedValue = "one hundred thousand";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber900000()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(900000);
-            var expectedValue = "nine hundred thousand";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
-        }
-
-        [TestMethod]
-        public void ConvertNumber999999()
-        {
-            // Arrange
-            var descriptor = new NumberDescriptor(999999);
-            //nine hundred thousand ninety nine thousand nine hundred ninety nine
-            var expectedValue = "nine hundred ninety nine thousand nine hundred ninety nine";
-
-            // Act
-            var result = _converter.ConvertToString(descriptor, _localization);
-
-            // Assert
-            Assert.AreEqual(expectedValue, result);
+            var exception = Assert.Throws<FormatException>(() => { var descriptor = new NumberDescriptor(-1); });
+            Assert.Equal(expectedMessage, exception.Message);
         }
     }
 }

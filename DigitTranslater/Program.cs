@@ -1,20 +1,32 @@
 ﻿using DigitTranslater.Localization;
+using DigitTranslater.Logger.Implements;
+using DigitTranslater.Logger.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DigitTranslater
 {
-    partial class Program
+    public partial class Program
     {
+        private const string LogPath = "application.log";
+
         #region Private Members
+
         private static List<ILanguageNumbersDescriptor> _languageNumbersDescriptors;
+        private static ILogger _logger;
+
         #endregion
 
         public static void Main(string[] args)
         {
             try
             {
+                _logger = new AggregatedLogger(
+                    new FileLogger(LogPath),
+                    new ConsoleLogger()
+                );
+
                 if (!ParametersValid(args))
                 {
                     ShowHelp();
@@ -25,23 +37,21 @@ namespace DigitTranslater
                 {
                     new EnLoсalizationNumbers(),
                     new RuLocalizationNumbers(),
-                    new UaLocalizationNumbers(),
+                    new UaLocalizationNumbers()
                 };
-
-                var converter = new Converter();
 
                 var inputData = GetInputData(args);
 
-                var localization = _languageNumbersDescriptors.First(x => x.Name == inputData.LocalizationName);
+                var localization = _languageNumbersDescriptors.First(l => l.Name == inputData.LocalizationName);
 
                 var numberDescriptor = new NumberDescriptor(inputData.Number);
-                var result = converter.ConvertToString(numberDescriptor, localization);
+                var result = Converter.ConvertToString(numberDescriptor, localization);
 
-                Console.WriteLine(result);
+                _logger.LogInformation($"Result: {result}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogInformation(ex.Message);
             }
         }
 
@@ -50,9 +60,14 @@ namespace DigitTranslater
             return args.Length == 2;
         }
 
+        private static bool IsNumberOverflow(int number)
+        {
+            return number >= 1000000000;
+        }
+
         private static void ShowHelp()
         {
-            Console.WriteLine("cd /?");
+            _logger.LogInformation("Input data must be in format <LocalizationType> <number>");
         }
 
         private static InputData GetInputData(string[] args)
@@ -68,9 +83,12 @@ namespace DigitTranslater
             var numberArgument = args[1];
 
             if (!int.TryParse(numberArgument, out int number))
-            {
                 throw new ArgumentException($"Number '{numberArgument}' has incorrect format");
-            }
+
+            if (IsNumberOverflow(number))
+                throw new OverflowException($"The number '{number}' must be less than 1000,000,000");
+
+            _logger.LogInformation($"Input data: Localization='{localization.Name}'; Number='{number}';");
 
             return new InputData
             {

@@ -1,8 +1,8 @@
 ﻿namespace DigitTranslater
 {
-    public class Converter
+    public static class Converter
     {
-        public string ConvertToString(NumberDescriptor descriptor, ILanguageNumbersDescriptor numbers)
+        public static string ConvertToString(NumberDescriptor descriptor, ILanguageNumbersDescriptor numbers)
         {
             var result = string.Empty;
 
@@ -16,7 +16,7 @@
                 result += $"{numbers.DozensThousands[descriptor.DozensThousands]} ";
             }
 
-            if (descriptor.Thousands > 0 || descriptor.DozensThousands > 0)
+            if (descriptor.Thousands > 0 || descriptor.DozensThousands > 0 || descriptor.HundredsThousands > 0)
             {
                 result += $"{numbers.Thousands[descriptor.Thousands]} ";
             }

@@ -56,7 +56,7 @@ namespace DigitTranslater
             var digits = new List<int>();
 
             foreach (var item in ch)
-                digits.Insert(0, int.Parse(item.ToString()));
+                digits.Insert(0, int.Parse($"{item}"));
 
             return digits;
         }

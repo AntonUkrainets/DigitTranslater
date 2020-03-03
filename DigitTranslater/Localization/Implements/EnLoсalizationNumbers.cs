@@ -87,15 +87,15 @@ namespace DigitTranslater
 
             HundredsThousands = new Dictionary<int, string>
             {
-                { 1, $"{Hundreds.GetValueOrDefault(1)} thousand"},
-                { 2, $"{Hundreds.GetValueOrDefault(2)} thousand"},
-                { 3, $"{Hundreds.GetValueOrDefault(3)} thousand"},
-                { 4, $"{Hundreds.GetValueOrDefault(4)} thousand"},
-                { 5, $"{Hundreds.GetValueOrDefault(5)} thousand"},
-                { 6, $"{Hundreds.GetValueOrDefault(6)} thousand"},
-                { 7, $"{Hundreds.GetValueOrDefault(7)} thousand"},
-                { 8, $"{Hundreds.GetValueOrDefault(8)} thousand"},
-                { 9, $"{Hundreds.GetValueOrDefault(9)} thousand"}
+                { 1, Hundreds.GetValueOrDefault(1) },
+                { 2, Hundreds.GetValueOrDefault(2) },
+                { 3, Hundreds.GetValueOrDefault(3) },
+                { 4, Hundreds.GetValueOrDefault(4) },
+                { 5, Hundreds.GetValueOrDefault(5) },
+                { 6, Hundreds.GetValueOrDefault(6) },
+                { 7, Hundreds.GetValueOrDefault(7) },
+                { 8, Hundreds.GetValueOrDefault(8) },
+                { 9, Hundreds.GetValueOrDefault(9) }
             };
         }
     }

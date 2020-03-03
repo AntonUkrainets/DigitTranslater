@@ -86,15 +86,15 @@ namespace DigitTranslater.Localization
 
             HundredsThousands = new Dictionary<int, string>
             {
-                { 1, $"{Hundreds.GetValueOrDefault(1)} тисяч"},
-                { 2, $"{Hundreds.GetValueOrDefault(2)} тисяч"},
-                { 3, $"{Hundreds.GetValueOrDefault(3)} тисяч"},
-                { 4, $"{Hundreds.GetValueOrDefault(4)} тисяч"},
-                { 5, $"{Hundreds.GetValueOrDefault(5)} тисяч"},
-                { 6, $"{Hundreds.GetValueOrDefault(6)} тисяч"},
-                { 7, $"{Hundreds.GetValueOrDefault(7)} тисяч"},
-                { 8, $"{Hundreds.GetValueOrDefault(8)} тисяч"},
-                { 9, $"{Hundreds.GetValueOrDefault(9)} тисяч"}
+                { 1, Hundreds.GetValueOrDefault(1) },
+                { 2, Hundreds.GetValueOrDefault(2) },
+                { 3, Hundreds.GetValueOrDefault(3) },
+                { 4, Hundreds.GetValueOrDefault(4) },
+                { 5, Hundreds.GetValueOrDefault(5) },
+                { 6, Hundreds.GetValueOrDefault(6) },
+                { 7, Hundreds.GetValueOrDefault(7) },
+                { 8, Hundreds.GetValueOrDefault(8) },
+                { 9, Hundreds.GetValueOrDefault(9) }
             };
         }
     }
