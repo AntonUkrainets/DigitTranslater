@@ -17,5 +17,11 @@ namespace DigitTranslater
         IReadOnlyDictionary<int, string> DozensThousands { get; }
 
         IReadOnlyDictionary<int, string> HundredsThousands { get; }
+
+        IReadOnlyDictionary<int, string> Millions { get; }
+
+        IReadOnlyDictionary<int, string> DozensMillions { get; }
+
+        IReadOnlyDictionary<int, string> HundredsMillions { get; }
     }
 }

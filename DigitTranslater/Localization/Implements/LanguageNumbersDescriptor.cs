@@ -18,6 +18,12 @@ namespace DigitTranslater.Localization
 
         public IReadOnlyDictionary<int, string> HundredsThousands { get; protected set; }
 
+        public IReadOnlyDictionary<int, string> Millions { get; protected set; }
+
+        public IReadOnlyDictionary<int, string> DozensMillions { get; protected set; }
+
+        public IReadOnlyDictionary<int, string> HundredsMillions { get; protected set; }
+
         public LanguageNumbersDescriptor()
         {
             InitLanguage();

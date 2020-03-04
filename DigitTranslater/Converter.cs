@@ -6,7 +6,24 @@
         {
             var result = string.Empty;
 
-            if(descriptor.HundredsThousands > 0)
+            if (descriptor.HundredsMillions > 0)
+            {
+                result += $"{numbers.HundredsMillions[descriptor.HundredsMillions]} ";
+            }
+
+            if (descriptor.DozensMillions > 0)
+            {
+                result += $"{numbers.DozensMillions[descriptor.DozensMillions]} ";
+            }
+
+            if (descriptor.Millions > 0 ||
+                descriptor.DozensMillions > 0 ||
+                descriptor.HundredsMillions > 0)
+            {
+                result += $"{numbers.Millions[descriptor.Millions]} ";
+            }
+
+            if (descriptor.HundredsThousands > 0)
             {
                 result += $"{numbers.HundredsThousands[descriptor.HundredsThousands]} ";
             }
@@ -16,7 +33,9 @@
                 result += $"{numbers.DozensThousands[descriptor.DozensThousands]} ";
             }
 
-            if (descriptor.Thousands > 0 || descriptor.DozensThousands > 0 || descriptor.HundredsThousands > 0)
+            if (descriptor.Thousands > 0 || 
+                descriptor.DozensThousands > 0 || 
+                descriptor.HundredsThousands > 0)
             {
                 result += $"{numbers.Thousands[descriptor.Thousands]} ";
             }
@@ -38,7 +57,8 @@
                 result += $"{numbers.Units[index]} ";
             }
 
-            if (descriptor.Units > 0 && descriptor.Dozens != 1)
+            if (descriptor.Units > 0 && 
+                descriptor.Dozens != 1)
             {
                 var index = descriptor.Units;
 
@@ -50,7 +70,10 @@
                 descriptor.Hundreds == 0 &&
                 descriptor.Thousands == 0 &&
                 descriptor.DozensThousands == 0 &&
-                descriptor.HundredsThousands == 0)
+                descriptor.HundredsThousands == 0 &&
+                descriptor.Millions == 0 &&
+                descriptor.DozensMillions == 0 &&
+                descriptor.HundredsMillions == 0)
             {
                 var index = descriptor.Units;
 

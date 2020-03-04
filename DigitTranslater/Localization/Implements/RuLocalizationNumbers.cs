@@ -97,6 +97,46 @@ namespace DigitTranslater
                 { 8, Hundreds.GetValueOrDefault(8) },
                 { 9, Hundreds.GetValueOrDefault(9) }
             };
+
+            Millions = new Dictionary<int, string>
+            {
+                { 0, "миллионов" },
+                { 1, $"{ Units.GetValueOrDefault(1) } миллион" },
+                { 2, $"{ Units.GetValueOrDefault(2) } миллиона" },
+                { 3, $"{ Units.GetValueOrDefault(3) } миллиона" },
+                { 4, $"{ Units.GetValueOrDefault(4) } миллиона" },
+                { 5, $"{ Units.GetValueOrDefault(5) } миллионов" },
+                { 6, $"{ Units.GetValueOrDefault(6) } миллионов" },
+                { 7, $"{ Units.GetValueOrDefault(7) } миллионов" },
+                { 8, $"{ Units.GetValueOrDefault(8) } миллионов" },
+                { 9, $"{ Units.GetValueOrDefault(9) } миллионов" }
+            };
+
+            DozensMillions = new Dictionary<int, string>
+            {
+                { 1, Units.GetValueOrDefault(10) },
+                { 2, Dozens.GetValueOrDefault(2) },
+                { 3, Dozens.GetValueOrDefault(3) },
+                { 4, Dozens.GetValueOrDefault(4) },
+                { 5, Dozens.GetValueOrDefault(5) },
+                { 6, Dozens.GetValueOrDefault(6) },
+                { 7, Dozens.GetValueOrDefault(7) },
+                { 8, Dozens.GetValueOrDefault(8) },
+                { 9, Dozens.GetValueOrDefault(9) }
+            };
+
+            HundredsMillions = new Dictionary<int, string>
+            {
+                { 1, Hundreds.GetValueOrDefault(1) },
+                { 2, Hundreds.GetValueOrDefault(2) },
+                { 3, Hundreds.GetValueOrDefault(3) },
+                { 4, Hundreds.GetValueOrDefault(4) },
+                { 5, Hundreds.GetValueOrDefault(5) },
+                { 6, Hundreds.GetValueOrDefault(6) },
+                { 7, Hundreds.GetValueOrDefault(7) },
+                { 8, Hundreds.GetValueOrDefault(8) },
+                { 9, Hundreds.GetValueOrDefault(9) }
+            };
         }
     }
 }

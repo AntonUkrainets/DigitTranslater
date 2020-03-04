@@ -11,6 +11,9 @@ namespace DigitTranslater
         public int Thousands { get; set; }
         public int DozensThousands { get; set; }
         public int HundredsThousands { get; set; }
+        public int Millions { get; set; }
+        public int DozensMillions { get; set; }
+        public int HundredsMillions { get; set; }
 
         public NumberDescriptor(int number)
         {
@@ -42,6 +45,15 @@ namespace DigitTranslater
                         break;
                     case 5:
                         HundredsThousands = numberParts[index];
+                        break;
+                    case 6:
+                        Millions = numberParts[index];
+                        break;
+                    case 7:
+                        DozensMillions = numberParts[index];
+                        break;
+                    case 8:
+                        HundredsMillions = numberParts[index];
                         break;
                     default:
                         throw new NotSupportedException();

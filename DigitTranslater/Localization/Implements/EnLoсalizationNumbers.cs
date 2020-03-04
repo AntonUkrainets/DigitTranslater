@@ -47,29 +47,29 @@ namespace DigitTranslater
 
             Hundreds = new Dictionary<int, string>
             {
-                { 1, $"{Units.GetValueOrDefault(1)} hundred" },
-                { 2, $"{Units.GetValueOrDefault(2)} hundred" },
-                { 3, $"{Units.GetValueOrDefault(3)} hundred" },
-                { 4, $"{Units.GetValueOrDefault(4)} hundred" },
-                { 5, $"{Units.GetValueOrDefault(5)} hundred" },
-                { 6, $"{Units.GetValueOrDefault(6)} hundred" },
-                { 7, $"{Units.GetValueOrDefault(7)} hundred" },
-                { 8, $"{Units.GetValueOrDefault(8)} hundred" },
-                { 9, $"{Units.GetValueOrDefault(9)} hundred" }
+                { 1, $"{ Units.GetValueOrDefault(1) } hundred" },
+                { 2, $"{ Units.GetValueOrDefault(2) } hundred" },
+                { 3, $"{ Units.GetValueOrDefault(3) } hundred" },
+                { 4, $"{ Units.GetValueOrDefault(4) } hundred" },
+                { 5, $"{ Units.GetValueOrDefault(5) } hundred" },
+                { 6, $"{ Units.GetValueOrDefault(6) } hundred" },
+                { 7, $"{ Units.GetValueOrDefault(7) } hundred" },
+                { 8, $"{ Units.GetValueOrDefault(8) } hundred" },
+                { 9, $"{ Units.GetValueOrDefault(9) } hundred" }
             };
 
             Thousands = new Dictionary<int, string>
             {
                 { 0, "thousand" },
-                { 1, $"{Units.GetValueOrDefault(1)} thousand" },
-                { 2, $"{Units.GetValueOrDefault(2)} thousand" },
-                { 3, $"{Units.GetValueOrDefault(3)} thousand" },
-                { 4, $"{Units.GetValueOrDefault(4)} thousand" },
-                { 5, $"{Units.GetValueOrDefault(5)} thousand" },
-                { 6, $"{Units.GetValueOrDefault(6)} thousand" },
-                { 7, $"{Units.GetValueOrDefault(7)} thousand" },
-                { 8, $"{Units.GetValueOrDefault(8)} thousand" },
-                { 9, $"{Units.GetValueOrDefault(9)} thousand" }
+                { 1, $"{ Units.GetValueOrDefault(1) } thousand" },
+                { 2, $"{ Units.GetValueOrDefault(2) } thousand" },
+                { 3, $"{ Units.GetValueOrDefault(3) } thousand" },
+                { 4, $"{ Units.GetValueOrDefault(4) } thousand" },
+                { 5, $"{ Units.GetValueOrDefault(5) } thousand" },
+                { 6, $"{ Units.GetValueOrDefault(6) } thousand" },
+                { 7, $"{ Units.GetValueOrDefault(7) } thousand" },
+                { 8, $"{ Units.GetValueOrDefault(8) } thousand" },
+                { 9, $"{ Units.GetValueOrDefault(9) } thousand" }
             };
 
             DozensThousands = new Dictionary<int, string>
@@ -86,6 +86,46 @@ namespace DigitTranslater
             };
 
             HundredsThousands = new Dictionary<int, string>
+            {
+                { 1, Hundreds.GetValueOrDefault(1) },
+                { 2, Hundreds.GetValueOrDefault(2) },
+                { 3, Hundreds.GetValueOrDefault(3) },
+                { 4, Hundreds.GetValueOrDefault(4) },
+                { 5, Hundreds.GetValueOrDefault(5) },
+                { 6, Hundreds.GetValueOrDefault(6) },
+                { 7, Hundreds.GetValueOrDefault(7) },
+                { 8, Hundreds.GetValueOrDefault(8) },
+                { 9, Hundreds.GetValueOrDefault(9) }
+            };
+
+            Millions = new Dictionary<int, string>
+            {
+                { 0, "millions" },
+                { 1, $"{ Units.GetValueOrDefault(1) } million" },
+                { 2, $"{ Units.GetValueOrDefault(2) } millions" },
+                { 3, $"{ Units.GetValueOrDefault(3) } millions" },
+                { 4, $"{ Units.GetValueOrDefault(4) } millions" },
+                { 5, $"{ Units.GetValueOrDefault(5) } millions" },
+                { 6, $"{ Units.GetValueOrDefault(6) } millions" },
+                { 7, $"{ Units.GetValueOrDefault(7) } millions" },
+                { 8, $"{ Units.GetValueOrDefault(8) } millions" },
+                { 9, $"{ Units.GetValueOrDefault(9) } millions" }
+            };
+
+            DozensMillions = new Dictionary<int, string>
+            {
+                { 1, Units.GetValueOrDefault(10) },
+                { 2, Dozens.GetValueOrDefault(2) },
+                { 3, Dozens.GetValueOrDefault(3) },
+                { 4, Dozens.GetValueOrDefault(4) },
+                { 5, Dozens.GetValueOrDefault(5) },
+                { 6, Dozens.GetValueOrDefault(6) },
+                { 7, Dozens.GetValueOrDefault(7) },
+                { 8, Dozens.GetValueOrDefault(8) },
+                { 9, Dozens.GetValueOrDefault(9) }
+            };
+
+            HundredsMillions = new Dictionary<int, string>
             {
                 { 1, Hundreds.GetValueOrDefault(1) },
                 { 2, Hundreds.GetValueOrDefault(2) },

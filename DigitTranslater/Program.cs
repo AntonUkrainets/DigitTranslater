@@ -9,7 +9,12 @@ namespace DigitTranslater
 {
     public partial class Program
     {
+        #region Constants
+
         private const string LogPath = "application.log";
+        private const int OverflowNumber = 1000000000;
+
+        #endregion
 
         #region Private Members
 
@@ -86,7 +91,7 @@ namespace DigitTranslater
                 throw new ArgumentException($"Number '{numberArgument}' has incorrect format");
 
             if (IsNumberOverflow(number))
-                throw new OverflowException($"The number '{number}' must be less than 1000,000,000");
+                throw new OverflowException($"The number '{number}' must be less than {OverflowNumber}");
 
             _logger.LogInformation($"Input data: Localization='{localization.Name}'; Number='{number}';");
 

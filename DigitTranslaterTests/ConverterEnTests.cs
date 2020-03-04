@@ -35,6 +35,14 @@ namespace DigitTranslaterTests
         [InlineData(100000, "one hundred thousand")]
         [InlineData(900000, "nine hundred thousand")]
         [InlineData(999999, "nine hundred ninety nine thousand nine hundred ninety nine")]
+        [InlineData(1000000, "one million")]
+        [InlineData(8545324, "eight millions five hundred forty five thousand three hundred twenty four")]
+        [InlineData(10000000, "ten millions")]
+        [InlineData(77243921, "seventy seven millions two hundred forty three thousand nine hundred twenty one")]
+        [InlineData(99999999, "ninety nine millions nine hundred ninety nine thousand nine hundred ninety nine")]
+        [InlineData(100000000, "one hundred millions")]
+        [InlineData(123478934, "one hundred twenty three millions four hundred seventy eight thousand nine hundred thirty four")]
+        [InlineData(999999999, "nine hundred ninety nine millions nine hundred ninety nine thousand nine hundred ninety nine")]
         public void ConvertNumber(int number, string expectedValue)
         {
             // Arrange
