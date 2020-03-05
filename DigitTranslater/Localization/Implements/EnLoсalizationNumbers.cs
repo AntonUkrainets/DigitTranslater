@@ -1,7 +1,6 @@
-﻿using DigitTranslater.Localization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace DigitTranslater
+namespace DigitTranslater.Localization.Implements
 {
     public class EnLoсalizationNumbers : LanguageNumbersDescriptor
     {
@@ -9,7 +8,7 @@ namespace DigitTranslater
         {
             Name = "EN";
 
-            Units = new Dictionary<int, string>
+            Vocabulary = new Dictionary<int, string>
             {
                 { 0, "zero" },
                 { 1, "one" },
@@ -21,6 +20,7 @@ namespace DigitTranslater
                 { 7, "seven" },
                 { 8, "eight" },
                 { 9, "nine" },
+
                 { 10, "ten" },
                 { 11, "eleven" },
                 { 12, "twelve" },
@@ -30,112 +30,108 @@ namespace DigitTranslater
                 { 16, "sixteen" },
                 { 17, "seventeen" },
                 { 18, "eighteen" },
-                { 19, "nineteen" }
-            };
+                { 19, "nineteen" },
 
-            Dozens = new Dictionary<int, string>
-            {
-                { 2, "twenty" },
-                { 3, "thirty" },
-                { 4, "forty" },
-                { 5, "fifty" },
-                { 6, "sixty" },
-                { 7, "seventy" },
-                { 8, "eighty" },
-                { 9, "ninety" }
-            };
+                { 20, "twenty" },
+                { 30, "thirty" },
+                { 40, "forty" },
+                { 50, "fifty" },
+                { 60, "sixty" },
+                { 70, "seventy" },
+                { 80, "eighty" },
+                { 90, "ninety" },
 
-            Hundreds = new Dictionary<int, string>
-            {
-                { 1, $"{ Units.GetValueOrDefault(1) } hundred" },
-                { 2, $"{ Units.GetValueOrDefault(2) } hundred" },
-                { 3, $"{ Units.GetValueOrDefault(3) } hundred" },
-                { 4, $"{ Units.GetValueOrDefault(4) } hundred" },
-                { 5, $"{ Units.GetValueOrDefault(5) } hundred" },
-                { 6, $"{ Units.GetValueOrDefault(6) } hundred" },
-                { 7, $"{ Units.GetValueOrDefault(7) } hundred" },
-                { 8, $"{ Units.GetValueOrDefault(8) } hundred" },
-                { 9, $"{ Units.GetValueOrDefault(9) } hundred" }
-            };
+                { 100, "one hundred" },
+                { 200, "two hundreds" },
+                { 300, "three hundreds" },
+                { 400, "four hundreds" },
+                { 500, "five hundreds" },
+                { 600, "six hundreds" },
+                { 700, "seven hundreds" },
+                { 800, "eight hundreds" },
+                { 900, "nine hundreds" },
 
-            Thousands = new Dictionary<int, string>
-            {
-                { 0, "thousand" },
-                { 1, $"{ Units.GetValueOrDefault(1) } thousand" },
-                { 2, $"{ Units.GetValueOrDefault(2) } thousand" },
-                { 3, $"{ Units.GetValueOrDefault(3) } thousand" },
-                { 4, $"{ Units.GetValueOrDefault(4) } thousand" },
-                { 5, $"{ Units.GetValueOrDefault(5) } thousand" },
-                { 6, $"{ Units.GetValueOrDefault(6) } thousand" },
-                { 7, $"{ Units.GetValueOrDefault(7) } thousand" },
-                { 8, $"{ Units.GetValueOrDefault(8) } thousand" },
-                { 9, $"{ Units.GetValueOrDefault(9) } thousand" }
-            };
+                { -1000, "thousand" },
+                { 1000, "one thousand" },
+                { 2000, "two thousands" },
+                { 3000, "three thousands" },
+                { 4000, "four thousands" },
+                { 5000, "five thousands" },
+                { 6000, "six thousands" },
+                { 7000, "seven thousands" },
+                { 8000, "eight thousands" },
+                { 9000,  "nine thousands" },
 
-            DozensThousands = new Dictionary<int, string>
-            {
-                { 1, Units.GetValueOrDefault(10) },
-                { 2, Dozens.GetValueOrDefault(2) },
-                { 3, Dozens.GetValueOrDefault(3) },
-                { 4, Dozens.GetValueOrDefault(4) },
-                { 5, Dozens.GetValueOrDefault(5) },
-                { 6, Dozens.GetValueOrDefault(6) },
-                { 7, Dozens.GetValueOrDefault(7) },
-                { 8, Dozens.GetValueOrDefault(8) },
-                { 9, Dozens.GetValueOrDefault(9) }
-            };
+                { 10000, "ten thousands" },
+                { 11000, "eleven thousands" },
+                { 12000, "twelve thousands" },
+                { 13000, "thirteen thousands" },
+                { 14000, "fourteen thousands" },
+                { 15000, "fiveteen thousands" },
+                { 16000, "sixteen thousands" },
+                { 17000, "seventeen thousands" },
+                { 18000, "eighteen thousands" },
+                { 19000,  "nineteen thousands" },
 
-            HundredsThousands = new Dictionary<int, string>
-            {
-                { 1, Hundreds.GetValueOrDefault(1) },
-                { 2, Hundreds.GetValueOrDefault(2) },
-                { 3, Hundreds.GetValueOrDefault(3) },
-                { 4, Hundreds.GetValueOrDefault(4) },
-                { 5, Hundreds.GetValueOrDefault(5) },
-                { 6, Hundreds.GetValueOrDefault(6) },
-                { 7, Hundreds.GetValueOrDefault(7) },
-                { 8, Hundreds.GetValueOrDefault(8) },
-                { 9, Hundreds.GetValueOrDefault(9) }
-            };
+                { 20000, "twenty" },
+                { 30000, "thirty" },
+                { 40000, "forty" },
+                { 50000, "fifty" },
+                { 60000, "sixty" },
+                { 70000, "seventy" },
+                { 80000, "eighty" },
+                { 90000, "ninety" },
 
-            Millions = new Dictionary<int, string>
-            {
-                { 0, "millions" },
-                { 1, $"{ Units.GetValueOrDefault(1) } million" },
-                { 2, $"{ Units.GetValueOrDefault(2) } millions" },
-                { 3, $"{ Units.GetValueOrDefault(3) } millions" },
-                { 4, $"{ Units.GetValueOrDefault(4) } millions" },
-                { 5, $"{ Units.GetValueOrDefault(5) } millions" },
-                { 6, $"{ Units.GetValueOrDefault(6) } millions" },
-                { 7, $"{ Units.GetValueOrDefault(7) } millions" },
-                { 8, $"{ Units.GetValueOrDefault(8) } millions" },
-                { 9, $"{ Units.GetValueOrDefault(9) } millions" }
-            };
+                { 100000, "one hundred" },
+                { 200000, "two hundreds" },
+                { 300000, "three hundreds" },
+                { 400000, "four hundreds" },
+                { 500000, "five hundreds" },
+                { 600000, "six hundreds" },
+                { 700000, "seven hundreds" },
+                { 800000, "eight hundreds" },
+                { 900000, "nine hundreds" },
 
-            DozensMillions = new Dictionary<int, string>
-            {
-                { 1, Units.GetValueOrDefault(10) },
-                { 2, Dozens.GetValueOrDefault(2) },
-                { 3, Dozens.GetValueOrDefault(3) },
-                { 4, Dozens.GetValueOrDefault(4) },
-                { 5, Dozens.GetValueOrDefault(5) },
-                { 6, Dozens.GetValueOrDefault(6) },
-                { 7, Dozens.GetValueOrDefault(7) },
-                { 8, Dozens.GetValueOrDefault(8) },
-                { 9, Dozens.GetValueOrDefault(9) }
-            };
+                { -1000000, "million" },
+                { 1000000, "one million" },
+                { 2000000, "two millions" },
+                { 3000000, "three millions" },
+                { 4000000, "four millions" },
+                { 5000000, "five millions" },
+                { 6000000, "six millions" },
+                { 7000000, "seven millions" },
+                { 8000000, "eight millions" },
+                { 9000000, "nine millions" },
 
-            HundredsMillions = new Dictionary<int, string>
-            {
-                { 1, Hundreds.GetValueOrDefault(1) },
-                { 2, Hundreds.GetValueOrDefault(2) },
-                { 3, Hundreds.GetValueOrDefault(3) },
-                { 4, Hundreds.GetValueOrDefault(4) },
-                { 5, Hundreds.GetValueOrDefault(5) },
-                { 6, Hundreds.GetValueOrDefault(6) },
-                { 7, Hundreds.GetValueOrDefault(7) },
-                { 8, Hundreds.GetValueOrDefault(8) },
-                { 9, Hundreds.GetValueOrDefault(9) }
+                { 10000000, "ten millions" },
+                { 11000000, "eleven millions" },
+                { 12000000, "twelve millions" },
+                { 13000000, "thirteen millions" },
+                { 14000000, "fourteen millions" },
+                { 15000000, "fiveteen millions" },
+                { 16000000, "sixteen millions" },
+                { 17000000, "seventeen millions" },
+                { 18000000, "eighteen millions" },
+                { 19000000, "nineteen millions" },
+
+                { 20000000, "twenty" },
+                { 30000000, "thirty" },
+                { 40000000, "forty" },
+                { 50000000, "fifty" },
+                { 60000000, "sixty" },
+                { 70000000, "seventy" },
+                { 80000000, "восемьдесят" },
+                { 90000000, "ninety" },
+
+                { 100000000, "one hundred" },
+                { 200000000, "two hundreds" },
+                { 300000000, "three hundreds" },
+                { 400000000, "four hundreds" },
+                { 500000000, "five hundreds" },
+                { 600000000, "six hundreds" },
+                { 700000000, "seven hundreds" },
+                { 800000000, "eight hundreds" },
+                { 900000000, "nine hundreds" },
             };
         }
     }

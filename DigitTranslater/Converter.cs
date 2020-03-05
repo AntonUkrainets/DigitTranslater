@@ -1,83 +1,45 @@
-﻿namespace DigitTranslater
+﻿using System.Collections.Generic;
+using DigitTranslater.Describer.Implements;
+using DigitTranslater.Describer.Interfaces;
+using DigitTranslater.Localization.Interfaces;
+
+namespace DigitTranslater
 {
     public static class Converter
     {
-        public static string ConvertToString(NumberDescriptor descriptor, ILanguageNumbersDescriptor numbers)
+        private static readonly List<INumberPartDescriber> describers;
+
+        static Converter()
+        {
+            describers = new List<INumberPartDescriber>
+            {
+                new HundredMillionDescriber(),
+                new DozenMillionsDescriber(),
+                new MillionDescriber(),
+                new HundredThousandDescriber(),
+                new DozenThousandDescriber(),
+                new ThousandDescriber(),
+                new HundredDescriber(),
+                new DozenConverter(),
+                new UnitDescriber(),
+            };
+        }
+
+        public static string ConvertToString(
+            int number,
+            ILanguageNumbersDescriptor numbersDictionary
+        )
         {
             var result = string.Empty;
 
-            if (descriptor.HundredsMillions > 0)
+            foreach (var describer in describers)
             {
-                result += $"{numbers.HundredsMillions[descriptor.HundredsMillions]} ";
-            }
+                var part = describer.Describe(number, numbersDictionary);
 
-            if (descriptor.DozensMillions > 0)
-            {
-                result += $"{numbers.DozensMillions[descriptor.DozensMillions]} ";
-            }
+                result += part;
 
-            if (descriptor.Millions > 0 ||
-                descriptor.DozensMillions > 0 ||
-                descriptor.HundredsMillions > 0)
-            {
-                result += $"{numbers.Millions[descriptor.Millions]} ";
-            }
-
-            if (descriptor.HundredsThousands > 0)
-            {
-                result += $"{numbers.HundredsThousands[descriptor.HundredsThousands]} ";
-            }
-
-            if(descriptor.DozensThousands > 0)
-            {
-                result += $"{numbers.DozensThousands[descriptor.DozensThousands]} ";
-            }
-
-            if (descriptor.Thousands > 0 || 
-                descriptor.DozensThousands > 0 || 
-                descriptor.HundredsThousands > 0)
-            {
-                result += $"{numbers.Thousands[descriptor.Thousands]} ";
-            }
-
-            if (descriptor.Hundreds > 0)
-            {
-                result += $"{numbers.Hundreds[descriptor.Hundreds]} ";
-            }
-
-            if (descriptor.Dozens > 1)
-            {
-                result += $"{numbers.Dozens[descriptor.Dozens]} ";
-            }
-
-            if (descriptor.Dozens == 1)
-            {
-                var index = 10 + descriptor.Units;
-
-                result += $"{numbers.Units[index]} ";
-            }
-
-            if (descriptor.Units > 0 && 
-                descriptor.Dozens != 1)
-            {
-                var index = descriptor.Units;
-
-                result += $"{numbers.Units[index]} ";
-            }
-
-            if (descriptor.Units == 0 &&
-                descriptor.Dozens == 0 &&
-                descriptor.Hundreds == 0 &&
-                descriptor.Thousands == 0 &&
-                descriptor.DozensThousands == 0 &&
-                descriptor.HundredsThousands == 0 &&
-                descriptor.Millions == 0 &&
-                descriptor.DozensMillions == 0 &&
-                descriptor.HundredsMillions == 0)
-            {
-                var index = descriptor.Units;
-
-                result += $"{numbers.Units[index]} ";
+                if (part != string.Empty)
+                    result += " ";
             }
 
             return result.Trim();

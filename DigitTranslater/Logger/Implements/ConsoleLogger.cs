@@ -1,5 +1,5 @@
-﻿using DigitTranslater.Logger.Interfaces;
-using System;
+﻿using System;
+using DigitTranslater.Logger.Interfaces;
 
 namespace DigitTranslater.Logger.Implements
 {
@@ -7,7 +7,7 @@ namespace DigitTranslater.Logger.Implements
     {
         public void LogInformation(string message)
         {
-            Console.WriteLine($"{DateTime.UtcNow.ToString("yyyyMMdd HH:mm:ss")} {message}");
+            Console.WriteLine($"{DateTime.UtcNow.ToString("yyyy.MM.dd HH:mm:ss")} {message}");
         }
     }
 }

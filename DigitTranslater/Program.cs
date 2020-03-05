@@ -1,105 +1,54 @@
-﻿using DigitTranslater.Localization;
-using DigitTranslater.Logger.Implements;
-using DigitTranslater.Logger.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DigitTranslater.Localization.Implements;
+using DigitTranslater.Localization.Interfaces;
+using DigitTranslater.Logger.Implements;
+using DigitTranslater.Parser;
+using DigitTranslater.Validation;
 
 namespace DigitTranslater
 {
     public partial class Program
     {
-        #region Constants
-
-        private const string LogPath = "application.log";
-        private const int OverflowNumber = 1000000000;
-
-        #endregion
-
-        #region Private Members
-
-        private static List<ILanguageNumbersDescriptor> _languageNumbersDescriptors;
-        private static ILogger _logger;
-
-        #endregion
-
         public static void Main(string[] args)
         {
+            var logPath = "application.log";
+
+            var logger = new AggregatedLogger(
+                new FileLogger(logPath),
+                new ConsoleLogger()
+            );
+
             try
             {
-                _logger = new AggregatedLogger(
-                    new FileLogger(LogPath),
-                    new ConsoleLogger()
-                );
-
-                if (!ParametersValid(args))
+                if (!Validator.IsParametersValid(args))
                 {
-                    ShowHelp();
+                    logger.LogInformation("Input data must be in format <LocalizationType> <number>");
+
                     return;
                 }
 
-                _languageNumbersDescriptors = new List<ILanguageNumbersDescriptor>
+                var languageNumbersDescriptors = new List<ILanguageNumbersDescriptor>
                 {
                     new EnLoсalizationNumbers(),
                     new RuLocalizationNumbers(),
                     new UaLocalizationNumbers()
                 };
 
-                var inputData = GetInputData(args);
+                var inputDataParser = new InputDataParser(languageNumbersDescriptors, logger);
+                var inputData = inputDataParser.GetInputData(args);
 
-                var localization = _languageNumbersDescriptors.First(l => l.Name == inputData.LocalizationName);
+                var localization = languageNumbersDescriptors.First(l => l.Name == inputData.LocalizationName);
 
-                var numberDescriptor = new NumberDescriptor(inputData.Number);
-                var result = Converter.ConvertToString(numberDescriptor, localization);
+                var result = Converter.ConvertToString(inputData.Number, localization);
 
-                _logger.LogInformation($"Result: {result}");
+                logger.LogInformation($"Result: {result}");
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex.Message);
+                logger.LogInformation(ex.Message);
             }
-        }
-
-        private static bool ParametersValid(string[] args)
-        {
-            return args.Length == 2;
-        }
-
-        private static bool IsNumberOverflow(int number)
-        {
-            return number >= 1000000000;
-        }
-
-        private static void ShowHelp()
-        {
-            _logger.LogInformation("Input data must be in format <LocalizationType> <number>");
-        }
-
-        private static InputData GetInputData(string[] args)
-        {
-            var localizationNameArgument = args[0];
-
-            var localization = _languageNumbersDescriptors
-                .FirstOrDefault(l => string.Equals(l.Name, localizationNameArgument, StringComparison.InvariantCultureIgnoreCase));
-
-            if (localization == null)
-                throw new NotSupportedException($"Localization '{localizationNameArgument}' is not supported");
-
-            var numberArgument = args[1];
-
-            if (!int.TryParse(numberArgument, out int number))
-                throw new ArgumentException($"Number '{numberArgument}' has incorrect format");
-
-            if (IsNumberOverflow(number))
-                throw new OverflowException($"The number '{number}' must be less than {OverflowNumber}");
-
-            _logger.LogInformation($"Input data: Localization='{localization.Name}'; Number='{number}';");
-
-            return new InputData
-            {
-                LocalizationName = localization.Name,
-                Number = number
-            };
         }
     }
 }

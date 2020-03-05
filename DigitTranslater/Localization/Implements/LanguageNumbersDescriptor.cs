@@ -1,28 +1,15 @@
 ﻿using System.Collections.Generic;
+using DigitTranslater.Localization.Interfaces;
 
-namespace DigitTranslater.Localization
+namespace DigitTranslater.Localization.Implements
 {
     public abstract class LanguageNumbersDescriptor : ILanguageNumbersDescriptor
     {
+        public Dictionary<int, string> Vocabulary { get; protected set; }
+
         public string Name { get; protected set; }
 
-        public IReadOnlyDictionary<int, string> Units { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> Dozens { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> Hundreds { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> Thousands { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> DozensThousands { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> HundredsThousands { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> Millions { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> DozensMillions { get; protected set; }
-
-        public IReadOnlyDictionary<int, string> HundredsMillions { get; protected set; }
+        public IList<string> Number { get; }
 
         public LanguageNumbersDescriptor()
         {

@@ -1,7 +1,6 @@
-﻿using DigitTranslater.Localization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace DigitTranslater
+namespace DigitTranslater.Localization.Implements
 {
     public class RuLocalizationNumbers : LanguageNumbersDescriptor
     {
@@ -9,7 +8,7 @@ namespace DigitTranslater
         {
             Name = "RU";
 
-            Units = new Dictionary<int, string>
+            Vocabulary = new Dictionary<int, string>
             {
                 { 0, "ноль" },
                 { 1, "один" },
@@ -21,6 +20,7 @@ namespace DigitTranslater
                 { 7, "семь" },
                 { 8, "восемь" },
                 { 9, "девять" },
+
                 { 10, "десять" },
                 { 11, "одиннадцать" },
                 { 12, "двенадцать" },
@@ -30,112 +30,108 @@ namespace DigitTranslater
                 { 16, "шестнадцать" },
                 { 17, "семнадцать" },
                 { 18, "восемнадцать" },
-                { 19, "девятнадцать" }
-            };
+                { 19, "девятнадцать" },
 
-            Dozens = new Dictionary<int, string>
-            {
-                { 2, "двадцать" },
-                { 3, "тридцать" },
-                { 4, "сорок" },
-                { 5, "пятьдесят" },
-                { 6, "шестьдесят" },
-                { 7, "семьдесят" },
-                { 8, "восемьдесят" },
-                { 9, "девяносто" }
-            };
+                { 20, "двадцать" },
+                { 30, "тридцать" },
+                { 40, "сорок" },
+                { 50, "пятьдесят" },
+                { 60, "шестьдесят" },
+                { 70, "семьдесят" },
+                { 80, "восемьдесят" },
+                { 90, "девяносто" },
 
-            Hundreds = new Dictionary<int, string>
-            {
-                { 1, "сто" },
-                { 2, "двести" },
-                { 3, "триста" },
-                { 4, "четыреста" },
-                { 5, "пятьсот" },
-                { 6, "шестьсот" },
-                { 7, "семьсот" },
-                { 8, "восемьсот" },
-                { 9, "девятьсот" }
-            };
+                { 100, "сто" },
+                { 200, "двести" },
+                { 300, "триста" },
+                { 400, "четыреста" },
+                { 500, "пятьсот" },
+                { 600, "шестьсот" },
+                { 700, "семьсот" },
+                { 800, "восемьсот" },
+                { 900, "девятьсот" },
 
-            Thousands = new Dictionary<int, string>
-            {
-                { 0, "тысяч" },
-                { 1, "одна тысяча" },
-                { 2, "две тысячи" },
-                { 3, "три тысячи" },
-                { 4, "четыре тысячи" },
-                { 5, "пять тысяч" },
-                { 6, "шесть тысяч" },
-                { 7, "семь тысяч" },
-                { 8, "восемь тысяч" },
-                { 9, "девять тысяч" }
-            };
+                { -1000, "тысяч" },
+                { 1000, "одна тысяча" },
+                { 2000, "две тысячи" },
+                { 3000, "три тысячи" },
+                { 4000, "четыре тысячи" },
+                { 5000, "пять тысяч" },
+                { 6000, "шесть тысяч" },
+                { 7000, "семь тысяч" },
+                { 8000, "восемь тысяч" },
+                { 9000,  "девять тысяч" },
 
-            DozensThousands = new Dictionary<int, string>
-            {
-                { 1, Units.GetValueOrDefault(10) },
-                { 2, Dozens.GetValueOrDefault(2) },
-                { 3, Dozens.GetValueOrDefault(3) },
-                { 4, Dozens.GetValueOrDefault(4) },
-                { 5, Dozens.GetValueOrDefault(5) },
-                { 6, Dozens.GetValueOrDefault(6) },
-                { 7, Dozens.GetValueOrDefault(7) },
-                { 8, Dozens.GetValueOrDefault(8) },
-                { 9, Dozens.GetValueOrDefault(9) }
-            };
+                { 10000, "десять тысяч" },
+                { 11000, "одиннадцать тысяч" },
+                { 12000, "двенадцать тысяч" },
+                { 13000, "тринадцать тысяч" },
+                { 14000, "четырнадцать тысяч" },
+                { 15000, "пятнадцать тысяч" },
+                { 16000, "шестнадцать тысяч" },
+                { 17000, "семнадцать тысяч" },
+                { 18000, "восемнадцать тысяч" },
+                { 19000,  "девятнадцать тысяч" },
 
-            HundredsThousands = new Dictionary<int, string>
-            {
-                { 1, Hundreds.GetValueOrDefault(1) },
-                { 2, Hundreds.GetValueOrDefault(2) },
-                { 3, Hundreds.GetValueOrDefault(3) },
-                { 4, Hundreds.GetValueOrDefault(4) },
-                { 5, Hundreds.GetValueOrDefault(5) },
-                { 6, Hundreds.GetValueOrDefault(6) },
-                { 7, Hundreds.GetValueOrDefault(7) },
-                { 8, Hundreds.GetValueOrDefault(8) },
-                { 9, Hundreds.GetValueOrDefault(9) }
-            };
+                { 20000, "двадцать" },
+                { 30000, "тридцать" },
+                { 40000, "сорок" },
+                { 50000, "пятьдесят" },
+                { 60000, "шестьдесят" },
+                { 70000, "семьдесят" },
+                { 80000, "восемьдесят" },
+                { 90000, "девяносто" },
 
-            Millions = new Dictionary<int, string>
-            {
-                { 0, "миллионов" },
-                { 1, $"{ Units.GetValueOrDefault(1) } миллион" },
-                { 2, $"{ Units.GetValueOrDefault(2) } миллиона" },
-                { 3, $"{ Units.GetValueOrDefault(3) } миллиона" },
-                { 4, $"{ Units.GetValueOrDefault(4) } миллиона" },
-                { 5, $"{ Units.GetValueOrDefault(5) } миллионов" },
-                { 6, $"{ Units.GetValueOrDefault(6) } миллионов" },
-                { 7, $"{ Units.GetValueOrDefault(7) } миллионов" },
-                { 8, $"{ Units.GetValueOrDefault(8) } миллионов" },
-                { 9, $"{ Units.GetValueOrDefault(9) } миллионов" }
-            };
+                { 100000, "сто" },
+                { 200000, "двести" },
+                { 300000, "триста" },
+                { 400000, "четыреста" },
+                { 500000, "пятьсот" },
+                { 600000, "шестьсот" },
+                { 700000, "семьсот" },
+                { 800000, "восемьсот" },
+                { 900000, "девятьсот" },
 
-            DozensMillions = new Dictionary<int, string>
-            {
-                { 1, Units.GetValueOrDefault(10) },
-                { 2, Dozens.GetValueOrDefault(2) },
-                { 3, Dozens.GetValueOrDefault(3) },
-                { 4, Dozens.GetValueOrDefault(4) },
-                { 5, Dozens.GetValueOrDefault(5) },
-                { 6, Dozens.GetValueOrDefault(6) },
-                { 7, Dozens.GetValueOrDefault(7) },
-                { 8, Dozens.GetValueOrDefault(8) },
-                { 9, Dozens.GetValueOrDefault(9) }
-            };
+                { -1000000, "миллионов" },
+                { 1000000, "один миллион" },
+                { 2000000, "два миллиона" },
+                { 3000000, "три миллиона" },
+                { 4000000, "четыре миллиона" },
+                { 5000000, "пять миллионов" },
+                { 6000000, "шесть миллионов" },
+                { 7000000, "семь миллионов" },
+                { 8000000, "восемь миллионов" },
+                { 9000000, "девять миллионов" },
 
-            HundredsMillions = new Dictionary<int, string>
-            {
-                { 1, Hundreds.GetValueOrDefault(1) },
-                { 2, Hundreds.GetValueOrDefault(2) },
-                { 3, Hundreds.GetValueOrDefault(3) },
-                { 4, Hundreds.GetValueOrDefault(4) },
-                { 5, Hundreds.GetValueOrDefault(5) },
-                { 6, Hundreds.GetValueOrDefault(6) },
-                { 7, Hundreds.GetValueOrDefault(7) },
-                { 8, Hundreds.GetValueOrDefault(8) },
-                { 9, Hundreds.GetValueOrDefault(9) }
+                { 10000000, "десять миллионов" },
+                { 11000000, "одиннадцать миллионов" },
+                { 12000000, "двенадцать миллионов" },
+                { 13000000, "тринадцать миллионов" },
+                { 14000000, "четырнадцать миллионов" },
+                { 15000000, "пятнадцать миллионов" },
+                { 16000000, "шестнадцать миллионов" },
+                { 17000000, "семнадцать миллионов" },
+                { 18000000, "восемнадцать миллионов" },
+                { 19000000, "девятнадцать миллионов" },
+
+                { 20000000, "двадцать" },
+                { 30000000, "тридцать" },
+                { 40000000, "сорок" },
+                { 50000000, "пятьдесят" },
+                { 60000000, "шестьдесят" },
+                { 70000000, "семьдесят" },
+                { 80000000, "восемьдесят" },
+                { 90000000, "девяносто" },
+
+                { 100000000, "сто" },
+                { 200000000, "двести" },
+                { 300000000, "триста" },
+                { 400000000, "четыреста" },
+                { 500000000, "пятьсот" },
+                { 600000000, "шестьсот" },
+                { 700000000, "семьсот" },
+                { 800000000, "восемьсот" },
+                { 900000000, "девятьсот" }
             };
         }
     }

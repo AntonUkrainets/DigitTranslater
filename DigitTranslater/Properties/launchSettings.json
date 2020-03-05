@@ -2,7 +2,7 @@
   "profiles": {
     "DigitTranslater": {
       "commandName": "Project",
-      "commandLineArgs": "ru 1000000000"
+      "commandLineArgs": "ru 125"
     }
   }
 }
