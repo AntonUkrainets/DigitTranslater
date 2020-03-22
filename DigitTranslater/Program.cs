@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using DigitTranslater.Localization.Implements;
+using DigitTranslater.Business;
+using DigitTranslater.Localization;
 using DigitTranslater.Localization.Interfaces;
-using DigitTranslater.Logger.Implements;
 using DigitTranslater.Parser;
 using DigitTranslater.Validation;
+using Liba.Logger;
 
 namespace DigitTranslater
 {
@@ -29,7 +29,7 @@ namespace DigitTranslater
                     return;
                 }
 
-                var languageNumbersDescriptors = new List<ILanguageNumbersDescriptor>
+                var languageNumbersDescriptors = new ILanguageNumbersDescriptor[]
                 {
                     new EnLoсalizationNumbers(),
                     new RuLocalizationNumbers(),
@@ -41,7 +41,7 @@ namespace DigitTranslater
 
                 var localization = languageNumbersDescriptors.First(l => l.Name == inputData.LocalizationName);
 
-                var result = Converter.ConvertToString(inputData.Number, localization);
+                var result = NumberConverter.ConvertToString(inputData.Number, localization);
 
                 logger.LogInformation($"Result: {result}");
             }

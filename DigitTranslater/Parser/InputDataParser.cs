@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using DigitTranslater.Localization.Interfaces;
-using DigitTranslater.Logger.Interfaces;
 using DigitTranslater.Model;
 using DigitTranslater.Validation;
+using Liba.Logger.Interfaces;
 
 namespace DigitTranslater.Parser
 {
@@ -35,7 +35,10 @@ namespace DigitTranslater.Parser
             var numberArgument = args[1];
 
             if (!int.TryParse(numberArgument, out int number))
-                throw new ArgumentException($"Number '{numberArgument}' has incorrect format");
+                throw new FormatException($"Number '{numberArgument}' has incorrect format");
+
+            if (!Validator.IsPositiveNumber(number))
+                throw new ArgumentException($"The number '{number}' must be greather than '0'");
 
             if (Validator.IsNumberOverflow(number))
                 throw new OverflowException($"The number '{number}' must be less than {number}");

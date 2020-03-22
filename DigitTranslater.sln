@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitTranslater", "DigitTranslater\DigitTranslater.csproj", "{6F7F0C5E-B033-4B84-984E-CA9F1931913C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitTranslaterTests", "DigitTranslaterTests\DigitTranslaterTests.csproj", "{901CFEDA-CDD6-4B03-AA0A-D26CDA10C6BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitTranslaterTests", "DigitTranslaterTests\DigitTranslaterTests.csproj", "{901CFEDA-CDD6-4B03-AA0A-D26CDA10C6BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Liba", "Liba\Liba.csproj", "{7E9C3788-1705-4C1A-B213-A2E196871787}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{901CFEDA-CDD6-4B03-AA0A-D26CDA10C6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{901CFEDA-CDD6-4B03-AA0A-D26CDA10C6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{901CFEDA-CDD6-4B03-AA0A-D26CDA10C6BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9C3788-1705-4C1A-B213-A2E196871787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9C3788-1705-4C1A-B213-A2E196871787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9C3788-1705-4C1A-B213-A2E196871787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9C3788-1705-4C1A-B213-A2E196871787}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
